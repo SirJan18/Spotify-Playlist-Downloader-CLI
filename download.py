@@ -2,7 +2,7 @@ import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 import sys
 from configparser import ConfigParser
-
+from pytube import Search
 config = ConfigParser()
 config.read('config.ini')
 
@@ -44,6 +44,12 @@ def parsePlaylist(url):
 def DownloadFromYoutube(artist, album, track_name, track_id):
     #use somethig to search and download video from youtube 
     print("Downloading...")
+
+    #Search YouTube for the song
+    for index, song in enumerate(track_name):
+        s = Search(f'{song} by {artist[index]}')
+        print(len(s.results))
+        #Download Song
 
 
 
